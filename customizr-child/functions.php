@@ -16,3 +16,16 @@ function my_custom_credits(){
     </div>';
 }
 
+/**
+ * Move features below Home page (last thing before footer)
+**/
+//we hook the code on the wp_head hook, this way it will be executed before any html rendering.
+add_action ( 'wp_head' , 'move_my_fp');
+function move_my_fp() {
+  //we unhook the featured pages
+  remove_action  ( '__before_main_container', array( TC_featured_pages::$instance , 'tc_fp_block_display'), 10 );
+
+  //we re-hook the block. Check out the priority here : set to 0 to be the first in the list of different actions hooked to this hook 
+  add_action  ( '__before_footer', array( TC_featured_pages::$instance , 'tc_fp_block_display'), 0 );
+}
+
