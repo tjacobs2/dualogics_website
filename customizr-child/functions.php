@@ -17,10 +17,29 @@ function my_custom_credits(){
 }
 
 /**
+ * Add Google Analytics tracking number
+**/
+add_action('wp_head', 'my_analytics', 20);
+function my_analytics() {
+ ?>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-62413542-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script> 
+ <?php
+}
+
+/**
  * Move features below Home page (last thing before footer)
 **/
 //we hook the code on the wp_head hook, this way it will be executed before any html rendering.
-add_action ( 'wp_head' , 'move_my_fp');
+add_action ('wp_head', 'move_my_fp');
 function move_my_fp() {
   //we unhook the featured pages
   remove_action  ( '__before_main_container', array( TC_featured_pages::$instance , 'tc_fp_block_display'), 10 );
