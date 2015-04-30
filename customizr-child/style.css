@@ -11,18 +11,29 @@ Version:        1.0.0
 /* Your awesome customizations start right here !
 -------------------------------------------------------------- */
 
-/****** Full width border class *****/
-/*
-html, body {
-  overflow-x: hidden;
+/*** News page updates (no header, no white box) *****/
+.archive-header {
+    display: none;
 }
 
-.full-width-banner {
-  position: relative;
-  margin: 0 -601.5rem;
-  padding: 0.25rem 1.5rem;
-  background-color: #da9d4b;
-}*/
+article.post {
+    background-color: #fafafa;
+    color: #5a5a5a;
+    border: none;
+}
+
+.entry-title.format-icon::before {
+    display: none;
+}
+
+.entry-header {
+    text-align: center;
+}
+
+a {
+    color: #DA9D4B;
+    text-decoration: none;
+}
 
 /********* Don't display page titles *************/
 .page .entry-title {
